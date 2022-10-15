@@ -50,7 +50,25 @@ const agregarAlCarrito = (prodId) => {
     renderCarrito()
     console.log(carrito)
     const limpiarCarrito = document.getElementById("limpiar")
-    limpiarCarrito.addEventListener('click', () => divCarrito.innerHTML ='')
+    limpiarCarrito.addEventListener('click', () => {
+        Swal.fire({
+            title: "Esta seguro de querer vaciar el carrito?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "si",
+            cancelButtonText:"no",
+        }).then((result) => {
+            if (result.isConfirmed){
+                divCarrito.innerHTML =''
+                Swal.fire({
+                    title: "Se borro el carrito de compras",
+                    icon: "success",
+                    
+                })
+            }
+        })
+    })
+    //divCarrito.innerHTML ='')
 }
 
 mostrarproductos(productos);
