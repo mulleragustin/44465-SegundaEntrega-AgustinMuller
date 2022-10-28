@@ -1,9 +1,11 @@
-import { productos } from "./stock.js";
+
 
 //-------------
 let carrito = [];
-const mostrarproductos = (productos) => {
+const mostrarproductos = async () => {
     const divproductos = document.getElementById("listaproductos");
+    const response = await fetch("./stock.json")
+    const productos = await response.json();
 
     productos.forEach(producto => {
         const div = document.createElement(`div`)
@@ -71,6 +73,6 @@ const agregarAlCarrito = (prodId) => {
     //divCarrito.innerHTML ='')
 }
 
-mostrarproductos(productos);
+mostrarproductos();
 
 
