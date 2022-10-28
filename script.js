@@ -29,7 +29,11 @@ const mostrarproductos = async () => {
         alert(`Se agrego ${producto.nombre}`) })
     })
 }
-const agregarAlCarrito = (prodId) => {
+    
+
+    const agregarAlCarrito = async (prodId) => {
+        const response = await fetch("./stock.json")
+        const productos = await response.json();
     const item = productos.find((prod) => prod.id === prodId)
     carrito.push(item)
     const divCarrito = document.getElementById("listaCarrito")
